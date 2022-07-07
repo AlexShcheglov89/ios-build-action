@@ -36,6 +36,10 @@ You can add a single p12 key+cert file with `p12-base64 (p12-path)`, or if you h
 
 **Required if split key/cert**: Certificate path for the p12 key.
 
+#### `keychain_password`
+
+**Required**: KEYCHAIN_PASSWORD.
+
 ### mobileprovision
 
 #### `mobileprovision-base64`
@@ -43,7 +47,7 @@ You can add a single p12 key+cert file with `p12-base64 (p12-path)`, or if you h
 **Required**: Base64 encoded mobileprovision file. If you want to specify multiple files, you need to input in multiple lines and then use [`export-options`](#export-options) to specify the provisioning profile to use for each executable in your app.
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.5.0
+- uses: AlexShcheglov89/ios-build-action@v1.5.2
   with:
     mobileprovision-base64: |
       ${{ secrets.MY_MOBILEPROVISION_BASE64 }}
@@ -59,7 +63,7 @@ Also note, when creating base64 encoded inputs, make sure they don't contain new
 **Required**: mobileprovision path. If you want to specify multiple files, you need to input in multiple lines and then use [`export-options`](#export-options) to specify the provisioning profile to use for each executable in your app.
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.5.0
+- uses: AlexShcheglov89/ios-build-action@v1.5.2
   with:
     mobileprovision-path: |
       ios-build-1.mobileprovision
@@ -107,7 +111,7 @@ Output path of ipa. Default `"output.ipa"`.
 Targets to be updated with mobileprovision, code signing identity, etc. Split on new lines. Default `""`. (default to all targets)
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.5.0
+- uses: AlexShcheglov89/ios-build-action@v1.5.2
   with:
     update-targets: |
       MyApp
@@ -147,20 +151,21 @@ Welcome your contributions!
 ### single p12
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.5.0
+- uses: AlexShcheglov89/ios-build-action@v1.5.2
   with:
     project-path: Unity-iPhone.xcodeproj
     p12-base64: ${{ secrets.P12_BASE64 }}
     mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
     code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
     team-id: ${{ secrets.TEAM_ID }}
+    keychain_password: ${{ secrets.KEYCHAIN_PASSWORD }}
     workspace-path: Unity-iPhone.xcworkspace # optional
 ```
 
 ### key and cert
 
 ```yaml
-- uses: yukiarrr/ios-build-action@v1.5.0
+- uses: AlexShcheglov89/ios-build-action@v1.5.2
   with:
     project-path: Unity-iPhone.xcodeproj
     p12-key-base64: ${{ secrets.P12_KEY_BASE64 }}
@@ -168,5 +173,6 @@ Welcome your contributions!
     mobileprovision-base64: ${{ secrets.MOBILEPROVISION_BASE64 }}
     code-signing-identity: ${{ secrets.CODE_SIGNING_IDENTITY }}
     team-id: ${{ secrets.TEAM_ID }}
+    keychain_password: ${{ secrets.KEYCHAIN_PASSWORD }}
     workspace-path: Unity-iPhone.xcworkspace # optional
 ```
