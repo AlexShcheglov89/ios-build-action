@@ -8,7 +8,7 @@ platform :ios do
     create_keychain(
       name: 'ios-build.keychain',
       password: ENV['KEYCHAIN_PASSWORD'],
-      default_keychain: true,
+      default_keychain: false,
       unlock: true,
       timeout: 3600
     )
