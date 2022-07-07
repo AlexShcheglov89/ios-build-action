@@ -82,6 +82,9 @@ inputs:
     description: "Path for Swift Package Manager dependencies"
     required: false
     default: ""
+  keychain-password:
+    description: "Keychain password"
+    required: true
 runs:
   using: "node12"
   main: "dist/index.js"

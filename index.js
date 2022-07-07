@@ -13,6 +13,11 @@ async function run() {
       throw new Error("P12 keys missing or in the wrong format.");
     }
 
+    // Validate keuchain password
+    if (!core.getInput("keychain_password")) {
+      throw new Error("keychain_password missing or in the wrong format.");
+    }
+
     // Validate mobileprovision
     if (
       !core.getInput("mobileprovision-base64") &&
